@@ -3,7 +3,6 @@
 #include <vector>
 
 using namespace std;
-using namespace vector;
 
 // Explanation of solution
 // The brute force method of iterating [x1, ..., xn] to find indices such that xj + xk = target is O(N^2)
@@ -27,8 +26,8 @@ class Solution{
             int compliment = target - nums[i];
 
             if(m.find(compliment) != m.end()){
-                result.push_back(i);
                 result.push_back(m.find(compliment) -> second);
+                result.push_back(i);
                 break;
             } else {
                 m[nums.at(i)] = i;
@@ -41,12 +40,24 @@ class Solution{
 
 int main (){
 
-    vector<int> v = {1,3,5,7};
+    vector<int> v{ 1,3,5,7 };
+    int target = 8;
     Solution s; 
 
-    
+    vector<int> soln = s.twoSum(v, target);
 
-    return 0;
+
+
+    if(soln.size() != 0){
+        for(int value:soln){
+            cout<<value<<" ";
+        }
+        cout<<endl;
+        return 0;
+    } else {
+        cout << "No Solution Found" << endl;
+    }
+
 }
 
 
